@@ -1,4 +1,8 @@
 # This is Git's per-user configuration file.
+
+[core]
+    editor = vim
+
 [user]
 # Please adapt and uncomment the following lines:
 name = J. M. F. Tsang
@@ -15,5 +19,3 @@ email = j.m.f.tsang@cantab.net
 
 [diff]
 	tool = vimdiff
-# [core]
-# 	autocrlf = true
