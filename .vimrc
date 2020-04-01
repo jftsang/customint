@@ -422,3 +422,5 @@ nnoremap <space> za
 
 " enable mouse!
 " set mouse=a
+"
+colorscheme elflord
