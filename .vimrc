@@ -424,3 +424,7 @@ nnoremap <space> za
 " set mouse=a
 "
 colorscheme elflord
+
+" Macro for nicely formatting JSON files
+" https://coderwall.com/p/faceag/format-json-in-vim
+com! FormatJSON %!python -m json.tool
