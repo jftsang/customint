@@ -428,3 +428,8 @@ colorscheme elflord
 " Macro for nicely formatting JSON files
 " https://coderwall.com/p/faceag/format-json-in-vim
 com! FormatJSON %!python -m json.tool
+
+
+" Highlight whitespace at end of lines in a painful yellow colour
+" https://stackoverflow.com/a/356214
+match Todo /\s\+$/
