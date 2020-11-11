@@ -125,7 +125,7 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-colorscheme desert
+" colorscheme desert
 set background=dark
 
 " Set extra options when running in GUI mode
@@ -423,7 +423,7 @@ nnoremap <space> za
 " enable mouse!
 " set mouse=a
 "
-colorscheme elflord
+" colorscheme elflord
 
 " Macro for nicely formatting JSON files
 " https://coderwall.com/p/faceag/format-json-in-vim
@@ -433,3 +433,60 @@ com! FormatJSON %!python -m json.tool
 " Highlight whitespace at end of lines in a painful yellow colour
 " https://stackoverflow.com/a/356214
 match Todo /\s\+$/
+
+""" netrw - the vim file explorer
+" https://shapeshed.com/vim-netrw/
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 3 " or 3 for new tab
+" let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 15
+augroup ProjectDrawer
+  autocmd!
+  " autocmd VimEnter * :Vexplore
+augroup END
+
+
+""" vim plugin manager
+" https://github.com/junegunn/vim-plug
+" Install vim-plug if it is not already there
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+" Shorthand notation;
+" fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
+
+Plug 'airblade/vim-gitgutter'
+Plug 'morhetz/gruvbox'
+call plug#end()
+" :PlugInstall to install
+
+colorscheme gruvbox
+
+""" Git integration with vim-gitgutter
+" https://jakobgm.com/posts/vim/git-integration/
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
+set updatetime=250
+
+
+let g:gitgutter_override_sign_column_highlight = 1
+highlight SignColumn guibg=bg
+highlight SignColumn ctermbg=bg
+" Jump between hunks
+"nmap <Leader>Gn <Plug>(GitGutterNextHunk)  " git next
+"nmap <Leader>Gp <Plug>(GitGutterPrevHunk)  " git previous
+"" Hunk-add and hunk-revert for chunk staging
+"nmap <Leader>Ga <Plug>(GitGutterStageHunk)  " git add (chunk)
+"nmap <Leader>Gu <Plug>(GitGutterUndoHunk)   " git undo (chunk)

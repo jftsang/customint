@@ -17,11 +17,13 @@ email = j.m.f.tsang@cantab.net
     ss = status
     st = status --short --branch
     sh = show --oneline --stat
+    df = diff --stat
     br = branch -vva
     co = checkout
 
 [diff]
 	tool = vimdiff
+    mergetool = vimdiff
 # [core]
 #	autocrlf = true
 [core]
