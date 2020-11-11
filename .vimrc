@@ -480,11 +480,14 @@ let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = '<'
 set updatetime=250
 
-
 let g:gitgutter_override_sign_column_highlight = 1
 highlight SignColumn guibg=bg
 highlight SignColumn ctermbg=bg
 " Jump between hunks
+com! Gitn :GitGutterNextHunk
+com! Gitp :GitGutterPrevHunk
+com! Gita :GitGutterStageHunk
+com! Gitu :GitGutterUndoHunk
 "nmap <Leader>Gn <Plug>(GitGutterNextHunk)  " git next
 "nmap <Leader>Gp <Plug>(GitGutterPrevHunk)  " git previous
 "" Hunk-add and hunk-revert for chunk staging
