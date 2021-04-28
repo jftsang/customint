@@ -270,15 +270,6 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vimgrep searching and cope displaying
@@ -423,7 +414,7 @@ nnoremap <space> za
 "
 
 " enable mouse!
-" set mouse=a
+set mouse=a
 "
 " colorscheme elflord
 
@@ -432,18 +423,38 @@ nnoremap <space> za
 com! FormatJSON %!python -m json.tool
 
 
+""" Whitespace
+"
 " Highlight whitespace at end of lines in a painful yellow colour
 " https://stackoverflow.com/a/356214
 match Todo /\s\+$/
+highlight WhitespaceEOL ctermbg=yellow guibg=yellow
+match WhitespaceEOL /\s\+$/
+
+" Highlight trailing spaces
+" https://stackoverflow.com/questions/4998582/show-whitespace-characters-in-gvim#4998862
+set encoding=utf-8
+set list listchars=tab:→\ ,trail:·
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.java :call DeleteTrailingWS()
+autocmd BufWrite *.md :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
 
 """ netrw - the vim file explorer
 " https://shapeshed.com/vim-netrw/
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-let g:netrw_browse_split = 3 " or 3 for new tab
-" let g:netrw_browse_split = 4
+let g:netrw_browse_split = 0 " 3 for new tab, 4 for most recent window
 let g:netrw_altv = 1
-let g:netrw_winsize = 15
+" let g:netrw_winsize = 15
 augroup ProjectDrawer
   autocmd!
   " autocmd VimEnter * :Vexplore
