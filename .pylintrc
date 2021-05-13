@@ -6,7 +6,7 @@
 extension-pkg-whitelist=
 
 # Specify a score threshold to be exceeded before program exits with error.
-fail-under=10
+fail-under=0
 
 # Add files or directories to the blacklist. They should be base names, not
 # paths.
@@ -60,7 +60,36 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=print-statement,
+disable=unneeded-not,
+        missing-module-docstring,
+        missing-class-docstring,
+        missing-function-docstring,
+        misplaced-comparison-constant,
+        unidiomatic-typecheck,
+        consider-using-enumerate,
+        consider-iterating-dictionary,
+        bad-classmethod-argument,
+        bad-mcs-method-argument,
+        bad-mcs-classmethod-argument,
+        single-string-used-for-slots,
+        line-too-long,
+        too-many-lines,
+        trailing-whitespace,
+        missing-final-newline,
+        trailing-newlines,
+        multiple-statements,
+        bad-whitespace,
+        mixed-line-endings,
+        unexpected-line-ending-format,
+        bad-continuation,
+        wrong-spelling-in-comment,
+        wrong-spelling-in-docstring,
+        invalid-characters-in-docstring,
+        useless-import-alias,
+        import-outside-toplevel,
+        len-as-condition,
+        logging-too-many-args,
+        print-statement,
         parameter-unpacking,
         unpacking-in-except,
         old-raise-syntax,
@@ -78,6 +107,51 @@ disable=print-statement,
         useless-suppression,
         deprecated-pragma,
         use-symbolic-message-instead,
+        literal-comparison,
+        comparison-with-itself,
+        no-self-use,
+        no-classmethod-decorator,
+        no-staticmethod-decorator,
+        useless-object-inheritance,
+        property-with-parameters,
+        duplicate-code,
+        too-many-ancestors,
+        too-many-instance-attributes,
+        too-few-public-methods,
+        too-many-public-methods,
+        too-many-return-statements,
+        too-many-branches,
+        too-many-arguments,
+        too-many-locals,
+        too-many-statements,
+        too-many-boolean-expressions,
+        consider-merging-isinstance,
+        too-many-nested-blocks,
+        simplifiable-if-statement,
+        redefined-argument-from-local,
+        no-else-return,
+        consider-using-ternary,
+        trailing-comma-tuple,
+        stop-iteration-return,
+        simplify-boolean-expression,
+        inconsistent-return-statements,
+        useless-return,
+        consider-swap-variables,
+        consider-using-join,
+        consider-using-in,
+        consider-using-get,
+        chained-comparison,
+        consider-using-dict-comprehension,
+        consider-using-set-comprehension,
+        simplifiable-if-expression,
+        unnecessary-comprehension,
+        consider-using-sys-exit,
+        no-else-break,
+        no-else-continue,
+        dangerous-default-value,
+        fixme,
+        logging-not-lazy,
+        logging-fstring-interpolation,
         apply-builtin,
         basestring-builtin,
         buffer-builtin,
@@ -137,8 +211,7 @@ disable=print-statement,
         deprecated-urllib-function,
         xreadlines-attribute,
         deprecated-sys-function,
-        exception-escape,
-        comprehension-escape
+        import-error
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -154,7 +227,7 @@ enable=c-extension-no-member
 # which contain the number of messages in each category, as well as 'statement'
 # which is the total number of statements analyzed. This score is used by the
 # global evaluation report (RP0004).
-evaluation=10.0 - ((float(20 * error + 5 * warning + refactor + convention) / statement) * 10)
+evaluation=10.0 - float(10*error + 2*warning + refactor + convention)
 
 # Template used to display messages. This is a python new-style format string
 # used to format the message information. See doc for all details.
@@ -262,7 +335,8 @@ spelling-store-unknown-words=no
 [MISCELLANEOUS]
 
 # List of note tags to take in consideration, separated by a comma.
-notes=FIXME,
+notes=CHANGEME,
+      FIXME,
       XXX,
       TODO
 
@@ -285,7 +359,7 @@ check-str-concat-over-line-jumps=no
 
 # The type of string formatting that logging methods do. `old` means using %
 # formatting, `new` is for `{}` formatting.
-logging-format-style=old
+logging-format-style=new
 
 # Logging modules to check that the string format arguments are in logging
 # function parameter format.
@@ -299,7 +373,7 @@ argument-naming-style=snake_case
 
 # Regular expression matching correct argument names. Overrides argument-
 # naming-style.
-#argument-rgx=
+argument-rgx=[a-z0-9_]{1,30}$
 
 # Naming style matching correct attribute names.
 attr-naming-style=snake_case
@@ -353,10 +427,13 @@ function-naming-style=snake_case
 #function-rgx=
 
 # Good variable names which should always be accepted, separated by a comma.
-good-names=i,
+good-names=fp,
+           fn,
+           i,
            j,
            k,
-           ex,
+           exc,
+           x,
            Run,
            _
 
@@ -406,7 +483,7 @@ variable-naming-style=snake_case
 
 # Regular expression matching correct variable names. Overrides variable-
 # naming-style.
-#variable-rgx=
+variable-rgx=[a-z0-9_]{1,30}$
 
 
 [SIMILARITIES]
@@ -440,7 +517,7 @@ indent-after-paren=4
 indent-string='    '
 
 # Maximum number of characters on a single line.
-max-line-length=72
+max-line-length=100
 
 # Maximum number of lines in a module.
 max-module-lines=1000
@@ -591,5 +668,4 @@ valid-metaclass-classmethod-first-arg=cls
 
 # Exceptions that will emit a warning when being caught. Defaults to
 # "BaseException, Exception".
-overgeneral-exceptions=BaseException,
-                       Exception
+overgeneral-exceptions=BaseException
