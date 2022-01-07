@@ -326,7 +326,7 @@ c.TerminalInteractiveShell.editing_mode = 'vi'
 
 ## Enable mouse support in the prompt (Note: prevents selecting text with the
 #  mouse)
-#c.TerminalInteractiveShell.mouse_support = False
+c.TerminalInteractiveShell.mouse_support = True
 
 ## Display the current vi mode (when using vi editing mode).
 #c.TerminalInteractiveShell.prompt_includes_vi_mode = True
