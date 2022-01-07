@@ -479,6 +479,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
+
+Plug 'pangloss/vim-javascript'  " https://stackoverflow.com/questions/3223695/javascript-indentation-in-vim
+
+
 call plug#end()
 " :PlugInstall to install
 
