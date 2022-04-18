@@ -481,6 +481,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'morhetz/gruvbox'
 
 Plug 'pangloss/vim-javascript'  " https://stackoverflow.com/questions/3223695/javascript-indentation-in-vim
+Plug 'tpope/vim-commentary'  " https://vi.stackexchange.com/questions/8128/how-to-toggle-comments-with-ctrl
+                             " https://github.com/tpope/vim-commentary
 
 
 call plug#end()
