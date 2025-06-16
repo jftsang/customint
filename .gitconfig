@@ -16,8 +16,11 @@ email = j.m.f.tsang@cantab.net
     praise = blame
     an = annotate
     who = annotate
-    lg = log --graph --oneline --decorate --all
-    lgs = lg --stat
+    lg = log --graph --oneline --decorate origin/main HEAD
+    lga = log --graph --oneline --decorate --all
+    lgs = log --graph --oneline --decorate --stat
+    lgas = lgs --all
+    logs = log --stat
     logg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     in = status
     ss = status
